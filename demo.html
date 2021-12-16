@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- Augmented Reality QR code application demo using AR.js in html-->
+<!-- Created by Andrew LeBlanc Markel, 12 December 2021 -->
+<html>	
+	
+  <!-- Importing Augmented Reality Library-->
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <!-- Importing Marker + Location support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <body style='margin : 0px, overflow: hidden;">
+    <a-scene embedded arjs>
+      <!-- Assign an entity (box in this case) to a default hiro marker -->
+ 	<a-box
+	position="0 -1 0"
+        color="yellow">
+	></a-box>			
+			
+	<a-marker-camera preset="hiro"></a-marker-camera>
+		
+	<!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+        <!-- a-entity camera></a-entity -->
+    </a-scene>
+  </body>
+</html>

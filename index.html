@@ -6,18 +6,30 @@
   <!-- Importing Augmented Reality Library-->
   <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
   <!-- Importing Marker + Location support -->
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script-->
+  <!-- Importing Image + Location support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <body style="margin : 0px; overflow: hidden;">
+    <div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div>
     <a-scene embedded arjs>
-      <a-marker preset="hiro">
-	<!-- Assign an entity (box in this case) to a default hiro marker -->
+      
+      <!-- Assign an entity (box in this case) to a default hiro marker -->
+      <!--a-marker preset="hiro"-->
+      <!-- Assign an entity (box in this case) to a natural feature tracked image of a hiro marker -->
+      <a-nft
+	type="nft"
+	url="https://github.com/markelpolo/markelpolo.github.io/Hiro_marker_ARjs"
+      >
 	<a-box
 	position="0 0.5 0"
 	scale="0.2 0.2 0.2"
 	material="opacity: 0.5;"
 	color="yellow">
-	></a-box>					
-      </a-marker>	
+	></a-box>
+      <--/a-nft>
+      <!--/a-marker-->	
       <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
       <a-entity camera></a-entity> 
     </a-scene>

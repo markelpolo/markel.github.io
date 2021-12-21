@@ -12,7 +12,7 @@
   <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
   <body style="margin : 0px; overflow: hidden;">
     <a-scene 
-      vr-mode-ui="enabled: false;"
+      vr-mode-ui="enabled: true;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
@@ -24,6 +24,10 @@
       <a-nft
 	type="nft"
 	url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/AR-js-org/AR.js/master/aframe/examples/image-tracking/nft/trex/trex-image/trex"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
       >
 	<a-box
 	position="0 0.5 0"

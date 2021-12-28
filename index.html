@@ -44,8 +44,7 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
-      <!-- Assign an entity (box in this case) to a marker -->
-      <a-marker type="barcode" value=6>
+
       <!-- Assign an entity (box in this case) to a natural feature tracked image of a Tulane shield -->
       <!--a-nft
 	type="nft"
@@ -55,6 +54,8 @@
         smoothTolerance=".01"
         smoothThreshold="5"
       -->
+      <!-- Assign an entity (box in this case) to a marker -->
+      <a-marker type="barcode" value=6>
 	<a-box
 	position="0 1 0"
 	scale="0.2 0.2 0.2"
@@ -62,7 +63,17 @@
 	color="yellow"
 	></a-box>
       <!--/a-nft-->
-      </a-marker>	
+      </a-marker>
+	    
+      <!--Adding Hiro marker for debugging-->
+      <a-marker preset="hiro">
+	<a-box
+	position="0 1 0"
+	scale="0.2 0.2 0.2"
+	material="opacity: 0.5;"
+	color="yellow"
+	></a-box>   
+      </a-marker> 
       <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
       <a-entity camera></a-entity> 
     </a-scene>

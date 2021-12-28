@@ -4,12 +4,12 @@
 <html>	
 	
   <!-- Importing Augmented Reality Library-->
-  <!--script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script-->
+  <script src="https://aframe.io/releases/master/aframe.min.js"></script>
   <!-- Importing Marker + Location support -->
-  <!-- script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script-->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
   <!-- Importing Image + Location support -->
-  <script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script>
-  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+  <!-- script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script-->
+  <!-- script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script-->
   
   <style>
     .arjs-loader {
@@ -44,25 +44,25 @@
       embedded
       arjs="trackingMethod: best; sourceType: webcam;debugUIEnabled: false;"
     >
-      <!-- Assign an entity (box in this case) to a default hiro marker -->
-      <!--a-marker preset="hiro"-->
+      <!-- Assign an entity (box in this case) to a marker -->
+      <a-marker type="barcode" value=6>
       <!-- Assign an entity (box in this case) to a natural feature tracked image of a Tulane shield -->
-      <a-nft
+      <!--a-nft
 	type="nft"
 	url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/markelpolo/markelpolo.github.io/tree/main/Features/qr-code-basic"
         smooth="true"
         smoothCount="10"
         smoothTolerance=".01"
         smoothThreshold="5"
-      >
+      -->
 	<a-box
 	position="0 1 0"
 	scale="0.2 0.2 0.2"
 	material="opacity: 0.5;"
 	color="yellow"
 	></a-box>
-      </a-nft>
-      <!--/a-marker-->	
+      <!--/a-nft-->
+      </a-marker>	
       <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
       <a-entity camera></a-entity> 
     </a-scene>

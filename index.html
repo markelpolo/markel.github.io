@@ -62,13 +62,15 @@
         <a-asset-item id="us-mtl" src="/models/biomedical/US Scalar Cropped_Segmentation.mtl"></a-asset-item>
         <a-asset-item id="pa-obj" src="/models/biomedical/PA Scalar Cropped_Segmentation.obj"></a-asset-item>
         <a-asset-item id="pa-mtl" src="/models/biomedical/PA Scalar Cropped_Segmentation.mtl"></a-asset-item>
+        <a-asset-item id="wheel-obj" src="/models/wheel/Wheel.obj"></a-asset-item>
+        <a-asset-item id="wheel-mtl" src="/models/wheel/Wheel.mtl"></a-asset-item>
         <a-asset-item id="trex-gltf" src="/models/t-rex/scene.gltf"></a-asset-item>
       </a-assets>
 	    
       <!-- Assign a 3D asset to a 2D barcode -->
       <a-marker type="barcode" value="1">
 	<a-entity
-	obj-model="obj: #pa-obj; mtl: #pa-mtl"
+	obj-model="obj: #wheel-obj; mtl: #wheel-mtl"
 	scale="0.01 0.01 0.01"
 	position="0 0 0"
 	></a-entity>

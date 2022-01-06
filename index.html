@@ -55,12 +55,17 @@
         smoothThreshold="5"
       -->
       <!--/a-nft-->
+    <!-- Define assets for reference later -->    
+    <a-assets>
+      <a-asset-item id="ultrasound-obj" src="models/biomedical/US Scalar Cropped_Segmentation.obj"></a-asset-item>
+      <a-asset-item id="ultrasound-mtl" src="models/biomedical/US Scalar Cropped_Segmentation.mtl"></a-asset-item>
+      <a-asset-item id="t-rex-gltf" src="models/t-rex/scene.gltf"></a-asset-item>
+    </a-assets>
 	    
-      <!-- Assign a 3D model to a 2D barcode -->
+      <!-- Assign a 3D asset to a 2D barcode -->
       <a-marker type="barcode" value="1">
-	<!--copy and paste path from github repository, can start with / or not, both work-->
 	<a-entity
-	gltf-model="T-rex/scene.gltf"
+	obj-model="obj: #ultrasound-obj; mtl: #ultrasound-mtl"
 	scale="0.01 0.01 0.01"
 	position="0 0 0"
 	></a-entity>
@@ -75,6 +80,7 @@
 	color="yellow"
 	></a-box>   
       </a-marker> 
+      
       <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
       <a-entity camera></a-entity> 
     </a-scene>

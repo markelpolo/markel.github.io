@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- Augmented Reality QR code application demo using AR.js in html-->
+<!-- Created by Andrew LeBlanc Markel, 12 December 2021 -->
+<html>	
+	
+  <!-- Importing Augmented Reality Library-->
+  <script src="https://aframe.io/releases/1.0.0/aframe.min.js"></script>
+  <!-- Importing Marker + Location support -->
+  <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  <!-- Importing Image + Location support -->
+  <!-- script src="https://cdn.jsdelivr.net/gh/aframevr/aframe@1c2407b26c61958baa93967b5412487cd94b290b/dist/aframe-master.min.js"></script-->
+  <!-- script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script-->
+  
+  <!--style>
+    .arjs-loader {
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .arjs-loader div {
+      text-align: center;
+      font-size: 1.25em;
+      color: white;
+    }
+  </style-->	
+	
+  <body style="margin : 0px; overflow: hidden;">
+	  <header>
+		  <nav>
+			  <ul>
+				  <li><a href="bfil.html">Image based experience</a><li>
+			  </ul>
+		  </nav>
+	  </header>
+    <!-- minimal loader shown until image descriptors are loaded -->
+    <!--div class="arjs-loader">
+      <div>Loading, please wait...</div>
+    </div-->
+    <!-- AR scene, need "detectionMode: mono_and_matrix; matrixCodeType: 3x3;" to detect 2D barcodes -->
+    <a-scene 
+      stats
+      vr-mode-ui="enabled: true;"
+      renderer="logarithmicDepthBuffer: true;"
+      embedded
+      arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"
+    >
+
+      <!-- Assign an entity to a natural feature tracked image of a Tulane shield -->
+      <!--a-nft
+	type="nft"
+	url="https://arjs-cors-proxy.herokuapp.com/https://raw.githack.com/markelpolo/markelpolo.github.io/tree/main/Features/qr-code-basic"
+        smooth="true"
+        smoothCount="10"
+        smoothTolerance=".01"
+        smoothThreshold="5"
+      -->
+      <!--/a-nft-->
+      <!-- Define assets for reference later -->    
+      <a-assets>
+        <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
+        <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
+	<!--a-asset-item id="us-obj" src="/models/biomedical/US Scalar Cropped_Segmentation.obj"></a-asset-item-->
+        <!--a-asset-item id="us-mtl" src="/models/biomedical/US Scalar Cropped_Segmentation.mtl"></a-asset-item-->
+        <!--a-asset-item id="pa-obj" src="/models/biomedical/PA Scalar Cropped_Segmentation.obj"></a-asset-item-->
+        <!--a-asset-item id="pa-mtl" src="/models/biomedical/PA Scalar Cropped_Segmentation.mtl"></a-asset-item-->
+        <a-asset-item id="wheel-obj" src="/models/wheel/Wheel.obj"></a-asset-item>
+        <a-asset-item id="wheel-mtl" src="/models/wheel/Wheel.mtl"></a-asset-item>
+        <a-asset-item id="trex-gltf" src="/models/t-rex/scene.gltf"></a-asset-item>
+      </a-assets>
+	    
+      <!-- Assign a 3D asset to a 2D barcode -->
+      <a-marker type="barcode" value="0">
+	<a-entity
+	obj-model="obj: #usc-obj"
+	material="color: grey"
+	scale="0.15 0.15 0.15"
+	position="0 0 0"
+  	rotation="90 0 0"
+	></a-entity>
+      </a-marker>
+	    
+      <a-marker type="barcode" value="1">
+	<!--insert ochsner here-->
+      </a-marker>
+	    
+      <a-marker type="barcode" value="2">
+	<a-entity
+	obj-model="obj: #wheel-obj; mtl: #wheel-mtl"
+	scale="0.01 0.01 0.01"
+	position="0 0 0"
+	></a-entity>
+      </a-marker>
+
+      <a-marker type="barcode" value="3">
+	<a-entity
+	obj-model="obj: #usc-obj"
+	material="color: grey"
+	scale="0.5 0.5 0.5"
+	position="0 0 0"
+  	rotation="90 0 0"
+	></a-entity>
+      </a-marker>
+      
+      <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+      <a-entity camera></a-entity> 
+    </a-scene>
+  </body>
+</html>

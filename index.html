@@ -4,10 +4,14 @@
   </head>
   <body>
     <a-scene>
+      <!--Define list of assets that we will use later.-->
       <a-assets>
         <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
         <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
       </a-assets>
+	    
+      <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
+      <a-entity camera look-controls>
 	<a-entity
         obj-model="obj: #usc-obj"
         material="color: grey"
@@ -15,6 +19,7 @@
         position="0 0 0"
         rotation="90 0 0"
         ></a-entity>
+      ></a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->
     </a-scene>
   </body>

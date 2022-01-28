@@ -3,11 +3,8 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script>
 	// `click` event emitted by browser on mouse click.
-	document.querySelector('p').addEventListener('touchstart', function (evt) {
-  	  console.log('This 2D element was clicked!');
-	});
-	document.querySelector('p').addEventListener('touchend', function (evt) {
-  	  console.log('This 2D element was unclicked!');
+	document.querySelector('p').addEventListener('click', function (evt) {
+  		console.log('This 2D element was clicked!');
 	});
     </script>
   </head>
@@ -20,7 +17,7 @@
       </a-assets>
 	    
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
-      <a-entity camera look-controls>
+      <a-entity camera look-controls="touchEnabled: false; mouseEnabled:false">
 	<a-entity
         obj-model="obj: #usc-obj"
         material="color: grey"

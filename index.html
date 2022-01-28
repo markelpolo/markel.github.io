@@ -1,6 +1,15 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script>
+	// `click` event emitted by browser on mouse click.
+	document.querySelector('p').addEventListener('touchstart', function (evt) {
+  	  console.log('This 2D element was clicked!');
+	});
+	document.querySelector('p').addEventListener('touchend', function (evt) {
+  	  console.log('This 2D element was unclicked!');
+	});
+    </script>
   </head>
   <body>
     <a-scene>

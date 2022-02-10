@@ -77,7 +77,9 @@ AFRAME.registerComponent("gesture-detector", {
         positionChange: {
           x: currentState.position.x - previousState.position.x,
 
-          y: currentState.position.y - previousState.position.y
+          y: currentState.position.y - previousState.position.y,
+          
+          z: 0
         }
       };
 

@@ -104,6 +104,9 @@ AFRAME.registerComponent("gesture-detector", {
     if (event.touches.length === 0) {
       return null;
     }
+    else {
+      console.log('Touch!');
+    }
 
     // Convert event.touches to an array so we can use reduce
 

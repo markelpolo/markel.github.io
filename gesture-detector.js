@@ -78,14 +78,14 @@ AFRAME.registerComponent("gesture-detector", {
           positionChange: {
             x: currentState.position.x - previousState.position.x,
 
-            y: currentState.position.y - previousState.position.y,
-            
-            z: 0
+            y: currentState.position.y - previousState.position.y
           }
       };
       
       if (currentState.touchCount == 2){
-        eventDetail.positionChange.z = 0.5;
+        eventDetail.positionChange.z = 2;
+      } else {
+        eventDetail.positionChange.z = 0;
       }
 
       if (currentState.spread) {
@@ -110,9 +110,6 @@ AFRAME.registerComponent("gesture-detector", {
   getTouchState: function(event) {
     if (event.touches.length === 0) {
       return null;
-    }
-    else {
-      console.log('Touch!');
     }
 
     // Convert event.touches to an array so we can use reduce

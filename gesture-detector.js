@@ -72,6 +72,8 @@ AFRAME.registerComponent("gesture-detector", {
       this.internalState.previousState = currentState;
     }
 
+    console.log(currentState.touchCount);
+    
     if (gestureContinues) {
       if (currentState.touchCount == 1){
         const eventDetail = {

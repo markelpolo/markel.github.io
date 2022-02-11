@@ -87,6 +87,8 @@ AFRAME.registerComponent("gesture-detector", {
       } else {
         eventDetail.positionChange.z = 0;
       }
+      
+      console.log(eventDetail.positionChange);
 
       if (currentState.spread) {
         eventDetail.spreadChange = currentState.spread - previousState.spread;

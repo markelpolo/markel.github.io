@@ -84,7 +84,7 @@ AFRAME.registerComponent("gesture-detector", {
       
       if (currentState.touchCount == 2){
         
-        const T = [];
+        const torqueList = [];
         
         for (let i=0; i < 2; i++){
           // Creating arrays to use as coordinates
@@ -94,14 +94,16 @@ AFRAME.registerComponent("gesture-detector", {
         
           // Calculating vectors based off of coordinates
           const P = currentCenter - currentPosition;
-          const deltaP = previousPosition - currentPosition;
+          const F = previousPosition - currentPosition;
           
-          // Calculating Torque of the position change
-          T.push(Math.cross(P,deltaP)/Math.norm(P));
+          // Calculating Torque of the position change using cross product / magnitude of the original position vector
+          torqueList.push( (P[0]*F[1] - P[1]*F[0]) / Math.sqrt(Math.pow(P[0],2) + Math.pow(P[1],2)) );
         } 
         
+        console.log(torqueList);
+        
         // Calculating the total torque to apply to the z axis rotation
-        eventDetail.positionChange.z = T.reduce((sum, torque) => { return sum + torque; }, 0);
+        eventDetail.positionChange.z = torqueList.reduce((sum, torque) => { return sum + torque; }, 0);
       } else {
         eventDetail.positionChange.z = 0;
       }

@@ -83,7 +83,25 @@ AFRAME.registerComponent("gesture-detector", {
       };
       
       if (currentState.touchCount == 2){
-        eventDetail.positionChange.z = 0.001;
+        
+        const T = [];
+        
+        for (let i=0, i < 2, i++){
+          // Creating arrays to use as coordinates
+          const currentPosition = [currentState.touchList[i].clientX, currentState.touchList[i].clientY];
+          const currentCenter = [currentState.positionRaw.x, currentState.positionRaw.y];
+          const previousPosition = [previousState.touchList[i].clientX, previousState.touchList[i].clientY];
+        
+          // Calculating vectors based off of coordinates
+          const P = currentCenter - currentPosition;
+          const deltaP = previousPosition - currentPosition;
+          
+          // Calculating Torque of the position change
+          T.push(math.cross(P,deltaP)/math.norm(P));
+        } 
+        
+        // Calculating the total torque to apply to the z axis rotation
+        eventDetail.positionChange.z = T.reduce((sum, torque) => { return sum + torque; }, 0);
       } else {
         eventDetail.positionChange.z = 0;
       }

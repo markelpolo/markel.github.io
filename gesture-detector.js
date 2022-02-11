@@ -83,7 +83,7 @@ AFRAME.registerComponent("gesture-detector", {
       };
       
       if (currentState.touchCount == 2){
-        eventDetail.positionChange.z = 2;
+        eventDetail.positionChange.z = 0.2;
       } else {
         eventDetail.positionChange.z = 0;
       }

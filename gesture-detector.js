@@ -87,10 +87,12 @@ AFRAME.registerComponent("gesture-detector", {
         const torqueList = [];
         
         for (let i=0; i < 2; i++){
+          const screenScale = 2 / (window.innerWidth + window.innerHeight);
+          
           // Creating arrays to use as coordinates
-          const currentPosition = [currentState.touchList[i].clientX, currentState.touchList[i].clientY];
-          const currentCenter = [currentState.positionRaw.x, currentState.positionRaw.y];
-          const previousPosition = [previousState.touchList[i].clientX, previousState.touchList[i].clientY];
+          const currentPosition = [currentState.touchList[i].clientX*screenScale, currentState.touchList[i].clientY*screenScale];
+          const currentCenter = [currentState.positionRaw.x*screenScale, currentState.positionRaw.y*screenScale];
+          const previousPosition = [previousState.touchList[i].clientX*screenScale, previousState.touchList[i].clientY*screenScale];
         
           // Calculating vectors based off of coordinates
           const P = [currentCenter[0] - currentPosition[0], currentCenter[1] - currentPosition[1]];

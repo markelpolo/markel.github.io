@@ -103,7 +103,7 @@ AFRAME.registerComponent("gesture-detector", {
         console.log(torqueList);
         
         // Calculating the total torque to apply to the z axis rotation
-        eventDetail.positionChange.z = torqueList.((sum, torque) => sum + torque, 0);
+        eventDetail.positionChange.z = torqueList.reduce((sum, torque) => sum + torque, 0);
       } else {
         eventDetail.positionChange.z = 0;
       }

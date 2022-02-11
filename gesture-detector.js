@@ -119,7 +119,7 @@ AFRAME.registerComponent("gesture-detector", {
     }
 
     const touchState = {
-      touchList: touchList
+      touchList: touchList,
       touchCount: touchList.length
     };
 

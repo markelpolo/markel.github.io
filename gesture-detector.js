@@ -86,7 +86,7 @@ AFRAME.registerComponent("gesture-detector", {
         
         const T = [];
         
-        for (let i=0, i < 2, i++){
+        for (let i=0; i < 2; i++){
           // Creating arrays to use as coordinates
           const currentPosition = [currentState.touchList[i].clientX, currentState.touchList[i].clientY];
           const currentCenter = [currentState.positionRaw.x, currentState.positionRaw.y];

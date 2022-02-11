@@ -160,7 +160,8 @@ AFRAME.registerComponent("gesture-detector", {
 
       touchState.spread = spread * screenScale;
     }
-
+    
+    console.log(touchState.touchList);
     return touchState;
   },
 

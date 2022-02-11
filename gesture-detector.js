@@ -73,13 +73,27 @@ AFRAME.registerComponent("gesture-detector", {
     }
 
     if (gestureContinues) {
-      const eventDetail = {
-        positionChange: {
-          x: currentState.position.x - previousState.position.x,
+      if (currentState.touchCount == 1){
+        const eventDetail = {
+          positionChange: {
+            x: currentState.position.x - previousState.position.x,
 
-          y: currentState.position.y - previousState.position.y,
-        }
-      };
+            y: currentState.position.y - previousState.position.y,
+            
+            z: 0
+          }
+        };
+      } else if (currentState.touchCount == 2){
+        const eventDetail = {
+          positionChange: {
+            x: 0,
+
+            y: 0,
+            
+            z: 1
+          }
+        };
+      }
 
       if (currentState.spread) {
         eventDetail.spreadChange = currentState.spread - previousState.spread;

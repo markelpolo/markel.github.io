@@ -93,9 +93,9 @@ AFRAME.registerComponent("gesture-detector", {
           const previousPosition = [previousState.touchList[i].clientX, previousState.touchList[i].clientY];
         
           // Calculating vectors based off of coordinates
-          const P = currentCenter - currentPosition;
+          const P = [currentCenter[0] - currentPosition[0], currentCenter[1] - currentPosition[1]];
           console.log(P);
-          const F = previousPosition - currentPosition;
+          const F = [previousPosition[0] - currentPosition[0], previousPosition[1] - currentPosition[1]];
           console.log(F); 
           // Calculating Torque of the position change using cross product / magnitude of the original position vector
           torqueList.push( (P[0]*F[1] - P[1]*F[0]) / Math.sqrt(Math.pow(P[0],2) + Math.pow(P[1],2)) );

@@ -75,8 +75,8 @@ AFRAME.registerComponent("gesture-detector", {
     console.log(currentState.touchCount);
     
     if (gestureContinues) {
-      if (currentState.touchCount == 1){
-        const eventDetail = {
+      
+      const eventDetail = {
           positionChange: {
             x: currentState.position.x - previousState.position.x,
 
@@ -84,17 +84,10 @@ AFRAME.registerComponent("gesture-detector", {
             
             z: 0
           }
-        };
-      } else if (currentState.touchCount == 2){
-        const eventDetail = {
-          positionChange: {
-            x: 0,
-
-            y: 0,
-            
-            z: 1
-          }
-        };
+      };
+      
+      if (currentState.touchCount == 2){
+        eventDetail.positionChange = 0.5;
       }
 
       if (currentState.spread) {

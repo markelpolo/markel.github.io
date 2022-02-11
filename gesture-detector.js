@@ -97,7 +97,7 @@ AFRAME.registerComponent("gesture-detector", {
           const deltaP = previousPosition - currentPosition;
           
           // Calculating Torque of the position change
-          T.push(math.cross(P,deltaP)/math.norm(P));
+          T.push(Math.cross(P,deltaP)/Math.norm(P));
         } 
         
         // Calculating the total torque to apply to the z axis rotation

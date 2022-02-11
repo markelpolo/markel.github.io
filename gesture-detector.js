@@ -71,8 +71,6 @@ AFRAME.registerComponent("gesture-detector", {
 
       this.internalState.previousState = currentState;
     }
-
-    console.log(currentState.touchCount);
     
     if (gestureContinues) {
       
@@ -87,7 +85,7 @@ AFRAME.registerComponent("gesture-detector", {
       };
       
       if (currentState.touchCount == 2){
-        eventDetail.positionChange = 0.5;
+        eventDetail.positionChange.z = 0.5;
       }
 
       if (currentState.spread) {
@@ -168,7 +166,6 @@ AFRAME.registerComponent("gesture-detector", {
       touchState.spread = spread * screenScale;
     }
     
-    console.log(touchState.touchList);
     return touchState;
   },
 

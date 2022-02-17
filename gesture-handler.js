@@ -56,12 +56,16 @@ AFRAME.registerComponent("gesture-handler", {
       this.el.object3D.rotation.z +=
         event.detail.positionChange.z * this.data.rotationFactor;
         */
+      console.log(this.el.object3D.rotation);
+      
       this.el.object3D.setRotationFromAxisAngle(THREE.Vector3(0,1,0),
           event.detail.positionChange.x * this.data.rotationFactor); 
       this.el.object3D.setRotationFromAxisAngle(THREE.Vector3(1,0,0),
           event.detail.positionChange.y * this.data.rotationFactor);
       this.el.object3D.setRotationFromAxisAngle(THREE.Vector3(0,0,1),
-          event.detail.positionChange.z * this.data.rotationFactor);                         
+          event.detail.positionChange.z * this.data.rotationFactor);      
+      
+      console.log(this.el.object3D.rotation);
     }
   },
 

@@ -5,7 +5,7 @@
     <script src="gesture-handler.js"></script>
 
     <style>
-        .round-button {
+        .button {
 	    display:block;
 	    width:80px;
 	    height:80px;
@@ -20,7 +20,7 @@
 	    font-size:20px;
 	    font-weight:bold;
 	}
-	.round-button:hover {
+	.button:hover {
 	    background: #777555;
 	}
     </style>  
@@ -31,7 +31,7 @@
 	    let btn = document.createElement("button");
 	    btn.type = "button";
 	    btn.innerText = this.el.id;
-	    btn.setAttribute("class", "round-button");
+	    //btn.setAttribute("class", "round-button");
             console.log(btn);
             const str1 = "#";
             const str2 = str1.concat(this.el.id);

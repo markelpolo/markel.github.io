@@ -7,11 +7,11 @@
     <script>
       AFRAME.registerComponent("toggle-button", {
 	  init: function() {
-	    let btn = document.createElement("button");
+	    let btn = this.createElement("button");
             console.log(this.el.id);
 	    btn.addEventListener("click", (e) => {
-	    	let cylinder = document.querySelector(this.el.id)
-	    	cylinder.setAttribute("visible", !cylinder.getAttribute("visible"))
+	    	let model = document.querySelector(this.el.id)
+	    	model.setAttribute("visible", !model.getAttribute("visible"))
 	    })
 	  }
       })		    

@@ -5,7 +5,18 @@
     <script src="gesture-handler.js"></script>
   </head>
 	
-  <button type="button">Click Me!</button>
+
+  <script>
+    AFRAME.registerComponent("toggle-button", {
+	  init: function() {
+	    let btn = document.createElement("button");
+	    btn.addEventListener("click", (e) => {
+	    	let cylinder = document.querySelector(this.el.id)
+	    	cylinder.setAttribute("visible", !cylinder.getAttribute("visible"))
+	    })
+	  }
+    })		    
+  </script>
 	
   <body>
     <a-scene gesture-detector id="scene">
@@ -26,6 +37,7 @@
         rotation="180 0 0"
     	class="clickable"
         gesture-handler
+	toggle-button
         ></a-entity>
       </a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->

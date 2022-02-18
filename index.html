@@ -32,7 +32,8 @@
 	    btn.type = "button";
 	    btn.innerText = this.el.id;
 	    btn.setAttribute("class", "round-button");
-	    document.body.appendChild(btn);
+	    let cam = document.querySelector("#camera");
+	    cam.appendChild(btn);
             console.log(btn);
             const str1 = "#";
             const str2 = str1.concat(this.el.id);
@@ -57,7 +58,7 @@
       </a-assets>
 	    
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
-      <a-entity camera>
+      <a-entity id="camera" camera>
 	<a-entity
 	id="ultrasound-model"
         obj-model="obj: #usc-obj"

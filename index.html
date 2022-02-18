@@ -35,7 +35,7 @@
             console.log(btn);
             const str1 = "#";
             const str2 = str1.concat(this.el.id);
-	    btn.addEventListener("click", (e) => {
+	    btn.addEventListener("click", () => {
 	    	let model = document.querySelector(str2);
 		console.log(model);
 	    	model.setAttribute("visible", !model.getAttribute("visible"));

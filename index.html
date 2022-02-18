@@ -3,20 +3,22 @@
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
-  </head>
-	
-
-  <script>
-    AFRAME.registerComponent("toggle-button", {
+	  
+    <script>
+      AFRAME.registerComponent("toggle-button", {
 	  init: function() {
 	    let btn = document.createElement("button");
+            console.log(this.el.id);
 	    btn.addEventListener("click", (e) => {
 	    	let cylinder = document.querySelector(this.el.id)
 	    	cylinder.setAttribute("visible", !cylinder.getAttribute("visible"))
 	    })
 	  }
-    })		    
-  </script>
+      })		    
+    </script>
+  </head>
+	
+
 	
   <body>
     <a-scene gesture-detector id="scene">
@@ -37,7 +39,7 @@
         rotation="180 0 0"
     	class="clickable"
         gesture-handler
-	toggle-button
+        toggle-button
         ></a-entity>
       </a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->

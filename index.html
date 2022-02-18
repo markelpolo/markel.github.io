@@ -1,9 +1,29 @@
 <html>
   <head>
-    <link href="styles.css" rel="stylesheet">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
+
+    <style>
+        .round-button {
+	    display:block;
+	    width:80px;
+	    height:80px;
+	    line-height:80px;
+	    border: 2px solid #f5f5f5;
+	    border-radius: 50%;
+	    color:#f5f5f5;
+	    text-align:center;
+	    text-decoration:none;
+	    background: #555777;
+	    box-shadow: 0 0 3px gray;
+	    font-size:20px;
+	    font-weight:bold;
+	}
+	.round-button:hover {
+	    background: #777555;
+	}
+    </style>  
 	  
     <script>
       AFRAME.registerComponent("toggle-button", {
@@ -16,12 +36,12 @@
             const str1 = "#";
             const str2 = str1.concat(this.el.id);
 	    btn.addEventListener("click", (e) => {
-	    	let model = document.querySelector(str2)
+	    	let model = document.querySelector(str2);
 		console.log(model);
-	    	model.setAttribute("visible", !model.getAttribute("visible"))
-	    })
+	    	model.setAttribute("visible", !model.getAttribute("visible"));
+	    });
 	  }
-      })		    
+      });		    
     </script>
   </head>
 	

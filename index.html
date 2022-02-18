@@ -1,5 +1,6 @@
 <html>
   <head>
+    <link href="styles.css" rel="stylesheet">
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="gesture-detector.js"></script>
     <script src="gesture-handler.js"></script>
@@ -8,6 +9,8 @@
       AFRAME.registerComponent("toggle-button", {
 	  init: function() {
 	    let btn = document.createElement("button");
+	    btn.class += "round-button"
+	    btn.type += "button"
             console.log(btn);
             const str1 = "#";
             const str2 = str1.concat(this.el.id);

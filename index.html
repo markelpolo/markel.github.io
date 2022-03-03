@@ -27,6 +27,9 @@
 	
   
     <script>
+	function toggleVisibility() {
+   		console.log('Button Clicked');
+	}
 /*	
       AFRAME.registerComponent("toggle-button", {
 	  init: function() {
@@ -174,6 +177,7 @@
 
 	
   <body>
+    
     <a-scene gesture-detector id="scene">
       <!--Define list of assets that we will use later.-->
       <a-assets>
@@ -183,7 +187,11 @@
 	    
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
       <a-entity id="camera" camera>
-	<a-entity
+	//Button for visibility toggle
+        <button onclick="toggleVisibility()" class="round-button">Click me</button>
+	      
+	//Entity containing ultrasound model
+        <a-entity
 	id="ultrasound-model"
         obj-model="obj: #usc-obj"
         material="color: grey"

@@ -177,17 +177,16 @@
 
 	
   <body>
-    
+    <!--Button for visibility toggle-->
+    <button onclick="toggleVisibility()" class="round-button">Click</button>
+	  
     <a-scene gesture-detector id="scene">
       <!--Define list of assets that we will use later.-->
       <a-assets>
         <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
         <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
       </a-assets>
-	  
-      	<!--Button for visibility toggle-->
-        <button onclick="toggleVisibility()" class="round-button">Click</button>
-	    
+	  	    
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
       <a-entity id="camera" camera>
 

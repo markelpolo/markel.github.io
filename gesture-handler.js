@@ -85,4 +85,5 @@ AFRAME.registerComponent("gesture-handler", {
   
   handleRaycast: function (event) {
     console.log("Raycast!");
+  },
 });

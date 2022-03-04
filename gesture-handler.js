@@ -31,18 +31,19 @@ AFRAME.registerComponent("gesture-handler", {
 
   update: function () {
     if (this.data.enabled) {
-      this.el.sceneEl.addEventListener("onefingermove", this.handleRotation);
+      this.el.sceneEl.addEventListener("onefingermove", this.handleRaycast);
       this.el.sceneEl.addEventListener("twofingermove", this.handleRotation);
       this.el.sceneEl.addEventListener("twofingermove", this.handleScale);
     } else {
-      this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
+      this.el.sceneEl.removeEventListener("onefingermove", this.handleRaycast);
       this.el.sceneEl.removeEventListener("twofingermove", this.handleRotation);
       this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
     }
   },
 
   remove: function () {
-    this.el.sceneEl.removeEventListener("onefingermove", this.handleRotation);
+    this.el.sceneEl.removeEventListener("onefingermove", this.handleRaycast);
+    this.el.sceneEl.removeEventListener("twofingermove", this.handleRotation);
     this.el.sceneEl.removeEventListener("twofingermove", this.handleScale);
   },
 
@@ -81,4 +82,7 @@ AFRAME.registerComponent("gesture-handler", {
       this.el.object3D.scale.z = this.scaleFactor * this.initialScale.z;
     }
   },
+  
+  handleRaycast: function (event) {
+    console.log("Raycast!");
 });

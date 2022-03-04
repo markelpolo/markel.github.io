@@ -14,6 +14,8 @@
       <a-assets>
         <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
         <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
+        <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
+        <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
       </a-assets>
 	    
       <!--Button for visibility toggle-->
@@ -29,9 +31,18 @@
 		rotation="180 0 0">
 			<!-- Entity containing ultrasound model -->
 			<a-entity
-			id="ultrasound-model"
+			id="us-model"
 			obj-model="obj: #usc-obj"
 			material="color: grey"
+			visible="false"
+			></a-entity>
+			
+			<!-- Entity containing photaocoustic model -->
+			<a-entity
+			id="pa-model"
+			obj-model="obj: #usc-obj"
+			material="color: red"
+			visible="true"
 			></a-entity>
       		</a-entity>			
       </a-entity>

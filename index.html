@@ -17,24 +17,25 @@
       </a-assets>
 	    
       <!--Button for visibility toggle-->
-      <button type="button" class="round-button" aframe-injected>Click</button>
+      <!--button type="button" class="round-button" aframe-injected>Click</button-->
       
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
       <a-entity id="camera" camera>    
-	<!-- Entity containing ultrasound model -->
-        <a-entity
-	id="ultrasound-model"
-        obj-model="obj: #usc-obj"
-        material="color: grey"
-        scale="0.15 0.15 0.15"
-        position="0 0 -1.0"
-        rotation="180 0 0"
-    	class="clickable"
-        gesture-handler
-        toggle-button
-        ></a-entity>
+		<!-- Entity containing ultrasound model -->
+		<a-entity
+		id="ultrasound-model"
+		obj-model="obj: #usc-obj"
+		material="color: grey"
+		scale="0.15 0.15 0.15"
+		position="0 0 -1.0"
+		rotation="180 0 0"
+		class="clickable"
+		gesture-handler
+		></a-entity>
       </a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->
+	    
     </a-scene>
+	  
   </body>
 </html>

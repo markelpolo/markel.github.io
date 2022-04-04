@@ -12,8 +12,8 @@
     <a-scene gesture-detector vr-mode-ui="enabled: false" id="scene">
       <!--Define list of assets that we will use later.-->
       <a-assets>
-        <a-asset-item id="us-obj" src="/models/biomedical/US3D.obj"></a-asset-item>
-        <a-asset-item id="us-mtl" src="/models/biomedical/US3D.mtl"></a-asset-item>
+        <a-asset-item id="us-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
+        <a-asset-item id="us-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
         <a-asset-item id="pa-obj" src="/models/biomedical/PA3D.obj"></a-asset-item>
         <a-asset-item id="pa-mtl" src="/models/biomedical/PA3D.mtl"></a-asset-item>
       </a-assets>
@@ -33,17 +33,17 @@
 			<a-entity
 			id="us-model"
 			obj-model="obj: #us-obj"
-			material="color: grey, alphaTest: 0.5"
+			material="color: grey"
 			visible="true"
 			></a-entity>
 			
 			<!-- Entity containing photaocoustic model -->
-			<a-entity
+			<!--a-entity
 			id="pa-model"
 			obj-model="obj: #pa-obj"
 			material="color: red"
 			visible="true"
-			></a-entity>
+			></a-entity-->
       		</a-entity>			
       </a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->

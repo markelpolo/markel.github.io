@@ -10,10 +10,10 @@
   <body>
 
     <a href="pages/test.html">Test</a>
-
-    <a-scene gesture-detector vr-mode-ui="enabled: false" id="scene">
+    
+    <!--a-scene gesture-detector vr-mode-ui="enabled: false" id="scene">
       <!--Define list of assets that we will use later.-->
-      <a-assets>
+      <!--a-assets>
         <a-asset-item id="us-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
         <a-asset-item id="us-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
         <a-asset-item id="pa-obj" src="/models/biomedical/PA3D.obj"></a-asset-item>
@@ -24,7 +24,7 @@
       <!--button type="button" class="round-button" aframe-injected>Click</button-->
       
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
-      <a-entity id="camera" camera>    
+      <!--a-entity id="camera" camera>    
             	<a-entity 
 		id="model-holder" 
 		gesture-handler
@@ -32,7 +32,7 @@
 		position="0 0 -1.0"
 		rotation="180 0 0">
 			<!-- Entity containing ultrasound model -->
-			<a-entity
+			<!--a-entity
 			id="us-model"
 			obj-model="obj: #us-obj"
 			material="color: grey"
@@ -46,11 +46,11 @@
 			material="color: red"
 			visible="true"
 			></a-entity-->
-      		</a-entity>			
+      		<!--/a-entity>			
       </a-entity>
       <!--a-sky color="#ECECEC"></a-sky-->
 	    
-    </a-scene>
+    <!--/a-scene-->
 	  
   </body>
 </html>

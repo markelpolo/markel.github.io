@@ -18,17 +18,19 @@
       <a-assets>
         <a-asset-item id="usc-obj" src="/models/biomedical/Centered US.obj"></a-asset-item>
         <a-asset-item id="usc-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
-        <video src="/videos/Fish.mp4" preload="auto" id="vid" response-type="arraybuffer" loop></video>
+        <video src="/videos/Fish.mp4" id="vid" autoplay loop="true"></video>
       </a-assets>
       
-      <a-marker type="barcode" value="3">
+      <a-video src="#vid" width="2" height="1.2" scale="2 2 2" opacity="0.65">
+      </a-video>
+      
+      <!--a-marker type="barcode" value="3">
         <a-entity obj-model="#usc-obj" material="#usc-mtl" position="0 0 0">
-          <!--a-video src="#vid" width="2" height="1.2" scale="2 2 2" opacity="0.65">
-          </a-video-->
+
         </a-entity>
       </a-marker>
       
-      <a-entity camera></a-entity>
+      <a-entity camera></a-entity-->
     </a-scene>
   </body>
   

@@ -25,12 +25,17 @@
       </a-video-->
       
       <a-marker type="barcode" value="3">
-        <a-entity obj-model="#usc-obj" material="#usc-mtl" position="0 0 0">
-
-        </a-entity>
+        <a-entity
+        obj-model="obj: #usc-obj"
+        material="color: grey"
+        scale="0.5 0.5 0.5"
+        position="0 0 0"
+          rotation="90 0 0"
+        ></a-entity>
       </a-marker>
       
-      <a-entity camera></a-entity-->
+      <!-- use this <a-entity camera> to support multiple-markers, otherwise use <a-marker-camera> instead of </a-marker> -->
+      <a-entity camera></a-entity> 
     </a-scene>
   </body>
   

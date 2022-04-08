@@ -14,13 +14,12 @@
   </head>
 
   <!--Add this to scene settings for AR activation
-  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"-->
-  <body style='margin : 0px; overflow: hidden;'>
-    <a-scene
       vr-mode-ui="enabled: true;"
       renderer="logarithmicDepthBuffer: true;"
       embedded
-    >
+  arjs="trackingMethod: best; sourceType: webcam; debugUIEnabled: false; detectionMode: mono_and_matrix; matrixCodeType: 3x3;"-->
+  <body style='margin : 0px; overflow: hidden;'>
+    <a-scene>
       <a-assets>
         <!--image id="logo" src="/images/TU_shield.png"-->
         <video src="../videos/Fish.mp4" id="vid" autoplay loop="true"></video>
@@ -31,7 +30,7 @@
          width="2" 
          height="1.2" 
          scale="1.5 1.5 1.5" 
-         position="0 -1.5 -1.5"
+         position="0 0 0"
          rotation="0 0 0"
          opacity="1"
          play-on-click

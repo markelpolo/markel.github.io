@@ -38,15 +38,40 @@ class Player {
     ctx.stroke();
     ctx.fillStyle = 'red';
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.radius,0.Math.PI*2);
+    ctx.arc(this.x,this.y,this.radius,0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
-    ctx.fillRect(this.x,this.y,this.radius,10);
+    ctx.stroke();
+    //ctx.fillRect(this.x,this.y,this.radius,10);
   }
 }
     
 const player = new Player();
 //Potholes
+const phArray = [];
+class potHole {
+  constructor(){
+    this.x = Math.random() * canvas.width;
+    this.y = 0;
+    this.radius = 50;
+    this.speed = Math.random() * 5 + 1;
+  }
+  update(){
+    this.y += this.speed;
+  }
+  draw(){
+    ctx.fillStyle = 'blue';
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.closePath();
+    ctx.stroke();
+}
+
+function handlePotHoles(){
+
+//Collision detection and pothole array management
+}
 
 //Animation Loop
 function animate(){

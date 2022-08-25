@@ -68,6 +68,7 @@ class potHole {
     ctx.fill();
     ctx.closePath();
     ctx.stroke();
+  }
 }
 
 function handlePotHoles(){

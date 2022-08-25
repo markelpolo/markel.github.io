@@ -18,6 +18,8 @@ class Player {
     this.radius = 50;
     this.angle = 0;
     this.frame = 0;
+    this.frameX = 0;
+    this.frameY = 0;
   }  
   update(){
     //if touch interaction happens
@@ -31,17 +33,17 @@ class Player {
     //else they move left one position
   }
   draw(){
-    ctx.lineWidth = 0.2;
-    ctx.beginPath();
-    ctx.moveTo(this.x,this.y);
-    ctx.lineTo(this.x,this.y);
-    ctx.stroke();
+    //ctx.lineWidth = 0.2;
+    //ctx.beginPath();
+    //ctx.moveTo(this.x,this.y);
+    //ctx.lineTo(this.x,this.y);
+    //ctx.stroke();
     ctx.fillStyle = 'red';
     ctx.beginPath();
     ctx.arc(this.x,this.y,this.radius,0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
-    ctx.stroke();
+    //ctx.stroke();
     //ctx.fillRect(this.x,this.y,this.radius,10);
   }
 }

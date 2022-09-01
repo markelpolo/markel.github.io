@@ -50,8 +50,8 @@ class Player {
     
 const player = new Player();
 //Potholes
-const phArray = [];
-class potHole {
+const arrayPotHoles = [];
+class PotHole {
   constructor(){
     this.x = Math.random() * canvas.width;
     this.y = 0;
@@ -72,14 +72,23 @@ class potHole {
 }
 
 function handlePotHoles(){
-
 //Collision detection and pothole array management
+  if (gameFrame % 50 == 0){
+    arrayPotHoles.push(new PotHole());
+  }
+  for (let i = 0; i < arrayPotHoles.length; i++){
+    arrayPotHoles[i].update();
+    arrayPotHoles[i].draw();
+  }
 }
 
 //Animation Loop
 function animate(){
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  handlePotHoles();
   player.update();
   player.draw();
+  gameFrame++;
   requestAnimationFrame(animate);
 }
 animate();

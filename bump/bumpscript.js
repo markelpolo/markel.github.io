@@ -75,7 +75,7 @@ function handlePotHoles(){
 //Collision detection and pothole array management
   if (gameFrame % 50 == 0){
     arrayPotHoles.push(new PotHole());
-    console.Log(arrayPotHoles.length);
+    console.log(arrayPotHoles.length);
   }
   for (let i = 0; i < arrayPotHoles.length; i++){
     arrayPotHoles[i].update();

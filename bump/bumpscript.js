@@ -8,6 +8,14 @@ let score = 0;
 let gameFrame = 0;
 ctx.font = '50px Georgia';
 
+//Enum for lane position
+const Lane = Object.freeze({
+  Left: symbol("Left"),
+  Center: symbol("Center"),
+  Right: symbol("Right")
+  
+})
+
 //Touch interactivity
 
 //Player
@@ -20,6 +28,7 @@ class Player {
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;
+    this.lane = Lane.Center;
   }  
   update(){
     //if touch interaction happens

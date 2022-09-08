@@ -14,7 +14,7 @@ const Lane = Object.freeze({
   Center: symbol("Center"),
   Right: symbol("Right")
   
-})
+});
 
 //Touch interactivity
 

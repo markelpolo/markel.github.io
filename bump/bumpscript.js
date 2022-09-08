@@ -22,7 +22,7 @@ const Lane = Object.freeze({
 class Player {
   constructor(){
     this.x = canvas.width/2;
-    this.y = canvas.height/2;
+    this.y = canvas.height;
     this.radius = 50;
     this.angle = 0;
     this.frame = 0;
@@ -62,13 +62,14 @@ const player = new Player();
 const arrayPotHoles = [];
 class PotHole {
   constructor(){
-    this.x = Math.random() * canvas.width;
-    this.y = 0;
+    this.x = 0;
+    this.y = canvas.height/2;
     this.radius = 50;
     this.speed = Math.random() * 5 + 1;
   }
   update(){
-    this.y += this.speed;
+    this.x += this.speed;
+    this.y += this.speed/2;
   }
   draw(){
     ctx.fillStyle = 'blue';

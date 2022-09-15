@@ -63,8 +63,9 @@ const arrayPotHoles = [];
 class PotHole {
   constructor() {
     this.x = canvas.width;
-    this.y = canvas.height / 2;
+    this.y = canvas.height / 4;
     this.radius = 50;
+    this.scale = 0.2;
 
     //Determine lane of pothole based on random integer between -1 and 1
     switch (Math.floor(Math.random() * 3) - 1) {
@@ -85,7 +86,8 @@ class PotHole {
 
   }
   update() {
-		//All potholes are move with same vertical speed
+    //All potholes are move with same vertical speed and scale change
+    this.scale += 0.01
     this.y += 5 / 2;
     
     //Horizontal speed changes depending on lane to give perspective
@@ -106,7 +108,7 @@ class PotHole {
   draw() {
     ctx.fillStyle = 'blue';
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.radius*this.scale, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
     ctx.stroke();

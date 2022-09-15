@@ -93,13 +93,13 @@ class PotHole {
     //Horizontal speed changes depending on lane to give perspective
     switch (this.lane) {
       case Lane.Left:
-        this.x -= 6;
+        this.x -= 5;
         break;
       case Lane.Center:
-        this.x -= 4;
+        this.x -= 3;
         break;
       case Lane.Right:
-        this.x -= 2;
+        this.x -= 1;
         break;
       default:
         console.log('Error in lanes');

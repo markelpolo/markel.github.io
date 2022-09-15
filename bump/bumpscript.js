@@ -10,18 +10,18 @@ ctx.font = '50px Georgia';
 
 //Enum for lane position
 const Lane = Object.freeze({
-  Left: Symbol("Left"),
-  Center: Symbol("Center"),
-  Right: Symbol("Right")
-  
+  Left: "Left",
+  Center: "Center",
+  Right: "Right"
+
 });
 
 //Touch interactivity
 
 //Player
 class Player {
-  constructor(){
-    this.x = canvas.width/2;
+  constructor() {
+    this.x = canvas.width / 2;
     this.y = canvas.height;
     this.radius = 50;
     this.angle = 0;
@@ -29,8 +29,8 @@ class Player {
     this.frameX = 0;
     this.frameY = 0;
     this.lane = Lane.Center;
-  }  
-  update(){
+  }
+  update() {
     //if touch interaction happens
     //case they swipe right
     //if they are on the right edge
@@ -41,7 +41,7 @@ class Player {
     //then they run off the road and lose
     //else they move left one position
   }
-  draw(){
+  draw() {
     //ctx.lineWidth = 0.2;
     //ctx.beginPath();
     //ctx.moveTo(this.x,this.y);
@@ -49,25 +49,25 @@ class Player {
     //ctx.stroke();
     ctx.fillStyle = 'red';
     ctx.beginPath();
-    ctx.arc(this.x,this.y,this.radius,0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
     ctx.closePath();
     //ctx.stroke();
     //ctx.fillRect(this.x,this.y,this.radius,10);
   }
 }
-    
+
 const player = new Player();
 //Potholes
 const arrayPotHoles = [];
 class PotHole {
-  constructor(){
+  constructor() {
     this.x = canvas.width;
-    this.y = canvas.height/2;
+    this.y = canvas.height / 2;
     this.radius = 50;
-    
+
     //Determine lane of pothole based on random integer between -1 and 1
-    switch(Math.floor(Math.random() * 2) - 1){
+    switch (Math.floor(Math.random() * 3) - 1) {
       case -1:
         this.lane = Lane.Left;
         break;
@@ -80,13 +80,30 @@ class PotHole {
       default:
         console.log('Error in lanes');
     }
-        
+    
+    console.log(this.lane);
+
   }
-  update(){
-    this.x -= 5;
-    this.y += 5/2;
+  update() {
+		//All potholes are move with same vertical speed
+    this.y += 5 / 2;
+    
+    //Horizontal speed changes depending on lane to give perspective
+    switch (this.lane) {
+      case Lane.Left:
+        this.x -= 6;
+        break;
+      case Lane.Center:
+        this.x -= 4;
+        break;
+      case Lane.Right:
+        this.x -= 2;
+        break;
+      default:
+        console.log('Error in lanes');
+    }
   }
-  draw(){
+  draw() {
     ctx.fillStyle = 'blue';
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
@@ -96,19 +113,19 @@ class PotHole {
   }
 }
 
-function handlePotHoles(){
-//Collision detection and pothole array management
-  if (gameFrame % 50 == 0){
+function handlePotHoles() {
+  //Collision detection and pothole array management
+  if (gameFrame % 50 == 0) {
     arrayPotHoles.push(new PotHole());
   }
-  for (let i = 0; i < arrayPotHoles.length; i++){
+  for (let i = 0; i < arrayPotHoles.length; i++) {
     arrayPotHoles[i].update();
     arrayPotHoles[i].draw();
   }
 }
 
 //Animation Loop
-function animate(){
+function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   handlePotHoles();
   player.update();

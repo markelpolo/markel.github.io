@@ -83,7 +83,7 @@ class PotHole {
         
   }
   update(){
-    this.x += 5;
+    this.x -= 5;
     this.y += 5/2;
   }
   draw(){

@@ -10,9 +10,9 @@ ctx.font = '50px Georgia';
 
 //Enum for lane position
 const Lane = Object.freeze({
-  Left: symbol("Left"),
-  Center: symbol("Center"),
-  Right: symbol("Right")
+  Left: Symbol("Left"),
+  Center: Symbol("Center"),
+  Right: Symbol("Right")
   
 });
 
@@ -62,14 +62,29 @@ const player = new Player();
 const arrayPotHoles = [];
 class PotHole {
   constructor(){
-    this.x = 0;
+    this.x = canvas.width;
     this.y = canvas.height/2;
     this.radius = 50;
-    this.speed = Math.random() * 5 + 1;
+    
+    //Determine lane of pothole based on random integer between -1 and 1
+    switch(Math.floor(Math.random() * 2) - 1){
+      case -1:
+        this.lane = Lane.Left;
+        break;
+      case 0:
+        this.lane = Lane.Center;
+        break;
+      case 1:
+        this.lane = Lane.Right;
+        break;
+      default:
+        console.log('Error in lanes');
+    }
+        
   }
   update(){
-    this.x += this.speed;
-    this.y += this.speed/2;
+    this.x += 5;
+    this.y += 5/2;
   }
   draw(){
     ctx.fillStyle = 'blue';
@@ -85,7 +100,6 @@ function handlePotHoles(){
 //Collision detection and pothole array management
   if (gameFrame % 50 == 0){
     arrayPotHoles.push(new PotHole());
-    console.log(arrayPotHoles.length);
   }
   for (let i = 0; i < arrayPotHoles.length; i++){
     arrayPotHoles[i].update();

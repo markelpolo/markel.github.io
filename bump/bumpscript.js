@@ -87,7 +87,7 @@ class PotHole {
   }
   update() {
     //All potholes are move with same vertical speed and scale change
-    this.scale += 0.01
+    this.scale += 0.005;
     this.y += 5 / 2;
     
     //Horizontal speed changes depending on lane to give perspective

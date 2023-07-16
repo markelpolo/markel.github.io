@@ -49,7 +49,7 @@ class Player {
     //ctx.stroke();
     ctx.fillStyle = 'red';
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.width, this.height);
+    ctx.fillRect(this.x, this.y, this.width, this.height);
     ctx.fill();
     ctx.closePath();
     //ctx.stroke();

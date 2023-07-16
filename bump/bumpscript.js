@@ -10,9 +10,9 @@ ctx.font = '50px Georgia';
 
 //Enum for lane position
 const Lane = Object.freeze({
-  Left: "Left",
+  Top: "Top",
   Center: "Center",
-  Right: "Right"
+  Bottom: "Bottom"
 
 });
 
@@ -21,10 +21,10 @@ const Lane = Object.freeze({
 //Player
 class Player {
   constructor() {
-    this.x = canvas.width / 2;
-    this.y = canvas.height;
-    this.radius = 50;
-    this.angle = 0;
+    this.x = canvas.width * 3 / 4;
+    this.y = canvas.height / 2;
+    this.width = 50;
+    this.height = 100;
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;
@@ -32,14 +32,14 @@ class Player {
   }
   update() {
     //if touch interaction happens
-    //case they swipe right
-    //if they are on the right edge
+    //case they swipe Bottom
+    //if they are on the Bottom edge
     //then they run off the road and lose
-    //else they move right one position
-    //case they swipe left
-    //if they are on the left edge
+    //else they move Bottom one position
+    //case they swipe Top
+    //if they are on the Top edge
     //then they run off the road and lose
-    //else they move left one position
+    //else they move Top one position
   }
   draw() {
     //ctx.lineWidth = 0.2;
@@ -69,7 +69,7 @@ class PotHole {
     //Determine lane of pothole based on random integer between -1 and 1
     switch (Math.floor(Math.random() * 3) - 1) {
       case -1:
-        this.lane = Lane.Left;
+        this.lane = Lane.Top;
         this.y = canvas.height / 4;
         break;
       case 0:
@@ -77,7 +77,7 @@ class PotHole {
         this.y = canvas.height / 2;
         break;
       case 1:
-        this.lane = Lane.Right;
+        this.lane = Lane.Bottom;
         this.y = canvas.height * 3 / 4;
         break;
       default:
@@ -94,13 +94,13 @@ class PotHole {
     
     //Horizontal speed changes depending on lane to give perspective
     switch (this.lane) {
-      case Lane.Left:
+      case Lane.Top:
         this.x -= 3;
         break;
       case Lane.Center:
         this.x -= 3;
         break;
-      case Lane.Right:
+      case Lane.Bottom:
         this.x -= 3;
         break;
       default:

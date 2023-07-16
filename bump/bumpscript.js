@@ -1,11 +1,15 @@
 // Canvas setup
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
+
+/*
 if window.innerWidth >= window.innerHeight{
   window_dim = window.innerHeight;
 }else { 
   window_dim = window.innerWidth;
 }
+*/
+window_dim = 600;
 
 canvas.width = window_dim;
 canvas.height = window_dim;

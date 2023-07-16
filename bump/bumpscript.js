@@ -21,10 +21,10 @@ const Lane = Object.freeze({
 //Player
 class Player {
   constructor() {
-    this.width = 50;
-    this.height = 100;
-    this.x = canvas.width * 3 / 4;
-    this.y = canvas.height / 2 + this.height / 2;
+    this.width = 200;
+    this.height = 200;
+    this.x = canvas.width / 4;
+    this.y = canvas.height / 2;
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;

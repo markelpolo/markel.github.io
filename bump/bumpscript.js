@@ -23,8 +23,8 @@ class Player {
   constructor() {
     this.width = 200;
     this.height = 200;
-    this.x = canvas.width / 4;
-    this.y = canvas.height / 2;
+    this.x = canvas.width / 4 - this.width / 2;
+    this.y = canvas.height / 2 - this.height / 4;
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;
@@ -63,8 +63,9 @@ const arrayPotHoles = [];
 class PotHole {
   constructor() {
     this.x = canvas.width;
-    this.radius = 50;
-    this.scale = 0.2;
+    this.height = 50;
+    this.width = 100;
+    //this.scale = 0.2;
 
     //Determine lane of pothole based on random integer between -1 and 1
     switch (Math.floor(Math.random() * 3) - 1) {
@@ -110,8 +111,9 @@ class PotHole {
   draw() {
     ctx.fillStyle = 'blue';
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius*this.scale, 0, Math.PI * 2);
-    ctx.fill();
+    //ctx.arc(this.x, this.y, this.radius*this.scale, 0, Math.PI * 2);
+    ctx.strokeRect(this.x, this.y, this.width, this.height);
+    //ctx.fill();
     ctx.closePath();
     ctx.stroke();
   }

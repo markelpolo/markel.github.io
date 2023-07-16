@@ -63,7 +63,6 @@ const arrayPotHoles = [];
 class PotHole {
   constructor() {
     this.x = canvas.width;
-    this.y = canvas.height / 4;
     this.radius = 50;
     this.scale = 0.2;
 
@@ -71,12 +70,15 @@ class PotHole {
     switch (Math.floor(Math.random() * 3) - 1) {
       case -1:
         this.lane = Lane.Left;
+        this.y = canvas.height / 4;
         break;
       case 0:
         this.lane = Lane.Center;
+        this.y = canvas.height / 2;
         break;
       case 1:
         this.lane = Lane.Right;
+        this.y = canvas.height * 3 / 4;
         break;
       default:
         console.log('Error in lanes');
@@ -87,19 +89,19 @@ class PotHole {
   }
   update() {
     //All potholes are move with same vertical speed and scale change
-    this.scale += 0.005;
-    this.y += 5 / 2;
+    //this.scale += 0.005;
+    //this.y += 5 / 2;
     
     //Horizontal speed changes depending on lane to give perspective
     switch (this.lane) {
       case Lane.Left:
-        this.x -= 5;
+        this.x -= 3;
         break;
       case Lane.Center:
         this.x -= 3;
         break;
       case Lane.Right:
-        this.x -= 1;
+        this.x -= 3;
         break;
       default:
         console.log('Error in lanes');

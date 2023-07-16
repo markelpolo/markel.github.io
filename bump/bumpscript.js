@@ -1,8 +1,8 @@
 // Canvas setup
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
-canvas.width = 800;
-canvas.height = 500;
+canvas.width = 600;
+canvas.height = 600;
 
 let score = 0;
 let gameFrame = 0;
@@ -22,7 +22,7 @@ const Lane = Object.freeze({
 class Player {
   constructor() {
     this.width = 200;
-    this.height = 200;
+    this.height = 250;
     this.x = canvas.width / 4 - this.width / 2;
     this.y = canvas.height / 2 - this.height / 4;
     this.frame = 0;

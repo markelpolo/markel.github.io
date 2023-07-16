@@ -21,10 +21,10 @@ const Lane = Object.freeze({
 //Player
 class Player {
   constructor() {
-    this.x = canvas.width * 3 / 4;
-    this.y = canvas.height / 2;
     this.width = 50;
     this.height = 100;
+    this.x = canvas.width * 3 / 4;
+    this.y = canvas.height / 2 + this.height / 2;
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;
@@ -49,7 +49,7 @@ class Player {
     //ctx.stroke();
     ctx.fillStyle = 'red';
     ctx.beginPath();
-    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+    ctx.arc(this.x, this.y, this.width, this.height);
     ctx.fill();
     ctx.closePath();
     //ctx.stroke();

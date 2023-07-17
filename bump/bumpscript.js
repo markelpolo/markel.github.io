@@ -1,3 +1,8 @@
+//Import custom classes
+//import Player from "/src/player"
+//import InputHandler from "/src/input"
+
+
 // Canvas setup
 const canvas = document.getElementById('canvas1');
 const ctx = canvas.getContext('2d');
@@ -14,8 +19,10 @@ window_dim = 600;
 canvas.width = window_dim;
 canvas.height = window_dim;
 
-let score = 0;
-let gameFrame = 0;
+let score = 0; //The number of packages avoided.
+let gameFrame = 0; //The number of frames in the game.
+let groundY = 200;//The ground distance from the canvas width.
+let startingX = 150;
 ctx.font = '50px Georgia';
 
 //Enum for lane position
@@ -26,30 +33,41 @@ const Lane = Object.freeze({
 
 });
 
-//Touch interactivity
-
 //Player
 class Player {
-  constructor() {
-    this.width = 200;
-    this.height = 250;
-    this.x = canvas.width / 4 - this.width / 2;
-    this.y = canvas.height / 2 - this.height / 4;
+  constructor(x, y) {
+    this.offsetX = x;
+    this.offsetY = y;
+    this.w_stand = 100;
+    this.w_crouch = 150;
+    this.h_stand = 150;
+    this.h_crouch = 100;
+    this.width = this.w_stand;
+    this.height = this.h_stand;
+    this.x = this.offsetX - this.width/2;
+    this.y = this.offsetY - this.height;
+    this.vx = 0;
+    this.vy = 0;
     this.frame = 0;
     this.frameX = 0;
     this.frameY = 0;
     this.lane = Lane.Center;
+    this.crouch = false;
+    this.airborne = false;
+    this.speed = -5;
+    this.gravity = 0.1;
   }
   update() {
-    //if touch interaction happens
-    //case they swipe Bottom
-    //if they are on the Bottom edge
-    //then they run off the road and lose
-    //else they move Bottom one position
-    //case they swipe Top
-    //if they are on the Top edge
-    //then they run off the road and lose
-    //else they move Top one position
+    //If you are off the ground, your velocity will change
+    this.y += this.vy
+
+    if ((this.offsetY - this.height) > this.y){
+      this.vy += this.gravity;
+    } else {
+      this.airborne = false;
+      this.resetPosition();
+    }
+
   }
   draw() {
     //ctx.lineWidth = 0.2;
@@ -65,31 +83,83 @@ class Player {
     //ctx.stroke();
     //ctx.fillRect(this.x,this.y,this.radius,10);
   }
+  up(){
+    if (this.crouch) {
+        this.crouch = false;
+        this.width = this.w_stand;
+        this.height = this.h_stand;
+        this.resetPosition();
+    } else if (!this.airborne){
+      this.airborne = true;
+      this.vy = this.speed;
+    }
+  }
+  down(){
+    if (!this.crouch && !this.airborne) {
+      this.crouch = true;
+      this.width = this.w_crouch;
+      this.height = this.h_crouch;
+      this.resetPosition();
+    }
+  }
+  resetPosition(){
+    this.x = this.offsetX - this.width/2;
+    this.y = this.offsetY - this.height;
+  }
+}
+const player = new Player(startingX, canvas.height - groundY);
+
+//Touch interactivity
+class InputHandler {
+
+  constructor(player){
+    document.addEventListener('keydown', event => {
+        switch (event.key) {
+          case "ArrowDown":
+            player.down();
+            break;
+
+          case "ArrowUp":
+            player.up();
+            break;
+
+        }
+    });
+  }
+
+
 }
 
-const player = new Player();
-//Potholes
-const arrayPotHoles = [];
-class PotHole {
-  constructor() {
-    this.x = canvas.width;
+new InputHandler(player);
+
+
+
+//Packages
+const arrayPackages = [];
+class Package {
+  constructor(start,end,floor) {
+    this.start = start;
+    this.end = end; 
+    this.floor = floor;
     this.height = 50;
     this.width = 100;
+    this.spacing = 75;
+    this.x = this.start;
     //this.scale = 0.2;
 
-    //Determine lane of pothole based on random integer between -1 and 1
+    //Determine lane of Package based on random integer between -1 and 1
     switch (Math.floor(Math.random() * 3) - 1) {
       case -1:
-        this.lane = Lane.Top;
-        this.y = canvas.height / 4;
+        this.lane = Lane.Bottom;
+        this.y = this.floor - this.spacing;
         break;
       case 0:
         this.lane = Lane.Center;
-        this.y = canvas.height / 2;
+        this.y = this.floor - this.spacing * 2;
         break;
       case 1:
-        this.lane = Lane.Bottom;
-        this.y = canvas.height * 3 / 4;
+        this.lane = Lane.Top;
+        this.y = this.floor - this.spacing * 3;
         break;
       default:
         console.log('Error in lanes');
@@ -99,7 +169,7 @@ class PotHole {
 
   }
   update() {
-    //All potholes are move with same vertical speed and scale change
+    //All Packages are move with same vertical speed and scale change
     //this.scale += 0.005;
     //this.y += 5 / 2;
     
@@ -129,21 +199,21 @@ class PotHole {
   }
 }
 
-function handlePotHoles() {
-  //Collision detection and pothole array management
-  if (gameFrame % 50 == 0) {
-    arrayPotHoles.push(new PotHole());
+function handlePackages() {
+  //Collision detection and Package array management
+  if (gameFrame % 200 == 0) {
+    arrayPackages.push(new Package(canvas.width, 0, canvas.height - groundY));
   }
-  for (let i = 0; i < arrayPotHoles.length; i++) {
-    arrayPotHoles[i].update();
-    arrayPotHoles[i].draw();
+  for (let i = 0; i < arrayPackages.length; i++) {
+    arrayPackages[i].update();
+    arrayPackages[i].draw();
   }
 }
 
 //Animation Loop
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  handlePotHoles();
+  handlePackages();
   player.update();
   player.draw();
   gameFrame++;

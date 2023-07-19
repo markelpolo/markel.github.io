@@ -21,7 +21,7 @@ canvas.height = window_dim;
 
 let score = 0; //The number of packages avoided.
 let gameFrame = 0; //The number of frames in the game.
-let groundY = 200;//The ground distance from the canvas width.
+let groundY = 150;//The ground distance from the canvas height.
 let startingX = 150;
 ctx.font = '50px Georgia';
 
@@ -54,8 +54,8 @@ class Player {
     this.lane = Lane.Center;
     this.crouch = false;
     this.airborne = false;
-    this.speed = -5;
-    this.gravity = 0.1;
+    this.speed = -14;
+    this.gravity = 0.4;
   }
   update() {
     //If you are off the ground, your velocity will change
@@ -113,6 +113,10 @@ const player = new Player(startingX, canvas.height - groundY);
 class InputHandler {
 
   constructor(player){
+    
+    this.y_start = 0;
+    this.y_end = 0;
+
     document.addEventListener('keydown', event => {
         switch (event.key) {
           case "ArrowDown":
@@ -125,6 +129,25 @@ class InputHandler {
 
         }
     });
+
+    document.addEventListener('touchstart', event => {
+      this.y_start = event.changedTouches[0].screenY
+      console.log(this.y_start)
+    });
+
+    document.addEventListener('touchend', event => {
+      this.y_end = event.changedTouches[0].screenY
+      console.log(this.y_end)
+      //Test to see whether the finger swiped up or down past an error threshold.
+      let y_diff = this.y_start - this.y_end;
+      let y_err = 5;
+
+      if (y_diff > y_err) {player.up();}
+      else if(y_diff < -y_err) {player.down();}
+      else {console.log("no move")}
+    });
+
+    
   }
 
 
@@ -141,14 +164,14 @@ class Package {
     this.start = start;
     this.end = end; 
     this.floor = floor;
-    this.height = 50;
-    this.width = 100;
+    this.height = 20;
+    this.width = 40;
     this.spacing = 75;
     this.x = this.start;
     //this.scale = 0.2;
 
     //Determine lane of Package based on random integer between -1 and 1
-    switch (Math.floor(Math.random() * 3) - 1) {
+    switch (Math.floor(Math.random() * 2) - 1) {
       case -1:
         this.lane = Lane.Bottom;
         this.y = this.floor - this.spacing;
@@ -164,6 +187,21 @@ class Package {
       default:
         console.log('Error in lanes');
     }
+
+    //Determine speed of Package based on random integer between -1 and 1
+    switch (Math.floor(Math.random() * 3) - 1) {
+      case -1:
+        this.speed = -4
+        break;
+      case 0:
+        this.speed = -4
+        break;
+      case 1:
+        this.speed = -4
+        break;
+      default:
+        console.log('Error in lanes');
+    }
     
     console.log(this.lane);
 
@@ -172,8 +210,10 @@ class Package {
     //All Packages are move with same vertical speed and scale change
     //this.scale += 0.005;
     //this.y += 5 / 2;
+    this.x += this.speed;
     
     //Horizontal speed changes depending on lane to give perspective
+    /*
     switch (this.lane) {
       case Lane.Top:
         this.x -= 3;
@@ -187,6 +227,7 @@ class Package {
       default:
         console.log('Error in lanes');
     }
+    */
   }
   draw() {
     ctx.fillStyle = 'blue';
@@ -201,13 +242,30 @@ class Package {
 
 function handlePackages() {
   //Collision detection and Package array management
-  if (gameFrame % 200 == 0) {
+  if (gameFrame % 120 == 0) {
     arrayPackages.push(new Package(canvas.width, 0, canvas.height - groundY));
   }
+
+  //Collect a list of indices of packages outside of the frame of view
+  let idx = [];
+
   for (let i = 0; i < arrayPackages.length; i++) {
-    arrayPackages[i].update();
-    arrayPackages[i].draw();
+    
+    pack_i = arrayPackages[i];
+
+    //Update the position of all the packages
+    pack_i.update();
+
+    //If the package is out of the screen, remove it from the array
+    if (pack_i.x + pack_i.width < 0) { idx.push(i) }
+    //otherwise, draw it.
+    else { pack_i.draw(); }
+    
   }
+
+  for (let i = 0; i < idx.length; i++) { arrayPackages.splice(idx[i],1); }
+
+  //console.log(arrayPackages.length)
 }
 
 //Animation Loop

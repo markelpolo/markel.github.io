@@ -1,9 +1,9 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="/scripts/gesture-detector.js"></script>
-    <script src="/scripts/gesture-handler.js"></script>
-    <script scr="/scripts/toggle-visibility.js"></script>
+    <script src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/scripts/gesture-detector.js"></script>
+    <script src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/scripts/gesture-handler.js"></script>
+    <script scr="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/scripts/toggle-visibility.js"></script>
     <link rel="stylesheet" href="styles.css">
   </head>
 		
@@ -14,10 +14,8 @@
     <a-scene gesture-detector vr-mode-ui="enabled: false" id="scene">
       <!--Define list of assets that we will use later.-->
       <a-assets>
-        <a-asset-item id="us-obj" src="/models/biomedical/US Segmentation.obj"></a-asset-item>
-        <a-asset-item id="us-mtl" src="/models/biomedical/Centered US.mtl"></a-asset-item>
-        <a-asset-item id="pa-obj" src="/models/biomedical/PA Segmentation.obj"></a-asset-item>
-        <a-asset-item id="pa-mtl" src="/models/biomedical/PA3D.mtl"></a-asset-item>
+        <a-asset-item id="us-obj" src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/models/biomedical/US Segmentation.obj"></a-asset-item>
+        <a-asset-item id="pa-obj" src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/models/biomedical/PA Segmentation.obj"></a-asset-item>
       </a-assets>
 	    
       <!--Button for visibility toggle-->
@@ -25,27 +23,27 @@
       
       <!--Define camera entity and attach an object to it. This way the object will always be within view. -->	    
       <a-entity id="camera" camera>    
-            	<a-entity 
-		id="model-holder" 
-		gesture-handler
-		scale="0.15 0.15 0.15"
-		position="0 0 -1.5"
-		rotation="180 0 0">
-			<!-- Entity containing photaocoustic model -->
-			<a-entity
-			id="pa-model"
-			obj-model="obj: #pa-obj"
-			material="color: red; transparent: true; opacity: 1.0"
-			visible="true"
-			></a-entity>
-			
-			<!-- Entity containing ultrasound model -->
-			<a-entity
-			id="us-model"
-			obj-model="obj: #us-obj"
-			material="color: grey; transparent: true; opacity: 0.8"
-			visible="true"
-			></a-entity>
+        <a-entity 
+        id="model-holder" 
+        gesture-handler
+        scale="0.15 0.15 0.15"
+        position="0 0 -1.5"
+        rotation="180 0 0">
+          <!-- Entity containing photaocoustic model -->
+          <a-entity
+          id="pa-model"
+          obj-model="obj: #pa-obj"
+          material="color: red; transparent: true; opacity: 1.0"
+          visible="true"
+          ></a-entity>
+          
+          <!-- Entity containing ultrasound model -->
+          <a-entity
+          id="us-model"
+          obj-model="obj: #us-obj"
+          material="color: grey; transparent: true; opacity: 0.8"
+          visible="true"
+          ></a-entity>
 			
 
       		</a-entity>			

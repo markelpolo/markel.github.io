@@ -8,6 +8,6 @@ In progress: option to load other models into viewer, support for non-touch inte
 
 At https://markelpolo.github.io/friday-route/, you will find a prototype of an endless runner style minigame designed to accompany an animated series that I am producing. This game can be played using either a touch screen or a keyboard. To avoid the oncoming projectiles, swipe/key down to crouch and swipe/key up to stand from crouching or jump from standing.
 
-In progress: viewport fit to different orientations, character animations over primitives, collision detection, point system, and bonus scene unlocked after finishing the game.
+In progress: viewport fit to different orientations, collision detection, and character animations.
 
 

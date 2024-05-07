@@ -15,8 +15,7 @@
     <a-scene gesture-detector vr-mode-ui="enabled: false" id="scene">
       <!--Define list of assets that we will use later.-->
       <a-assets>
-        <a-asset-item id="us-obj" src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/models/biomedical/US Segmentation.obj"></a-asset-item>
-        <a-asset-item id="pa-obj" src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/models/biomedical/PA Segmentation.obj"></a-asset-item>
+        <a-asset-item id="spine-obj" src="https://raw.githubusercontent.com/markelpolo/markelpolo.github.io/main/model-viewer/models/biomedical/50kScoliosis1.obj"></a-asset-item>
       </a-assets>
 	    
       <!--Button for visibility toggle-->
@@ -30,19 +29,12 @@
         scale="0.15 0.15 0.15"
         position="0 0 -1.5"
         rotation="-145 -30 0">
-          <!-- Entity containing photaocoustic model >
-          <a-entity
-          id="pa-model"
-          obj-model="obj: #pa-obj"
-          material="color: red; transparent: true; opacity: 1.0"
-          visible="true"
-          ></a-entity-->
           
-          <!-- Entity containing ultrasound model -->
+          <!-- Entity containing spine model -->
           <a-entity
           id="us-model"
-          obj-model="obj: #us-obj"
-          material="color: grey; transparent: true; opacity: 0.8"
+          obj-model="obj: #spine-obj"
+          material="color: grey; transparent: false;"
           visible="true"
           ></a-entity>
 
